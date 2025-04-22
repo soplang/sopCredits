@@ -8,9 +8,9 @@ from datetime import datetime
 
 def get_github_token():
     """Get GitHub token from environment variable."""
-    token = os.environ.get('GITHUB_TOKEN')
+    token = os.environ.get('GB_TOKEN')
     if not token:
-        raise ValueError("GITHUB_TOKEN environment variable is not set")
+        raise ValueError("GB_TOKEN environment variable is not set")
     return token
 
 
@@ -154,7 +154,7 @@ def generate_markdown(contributors, org_name):
 
 
 def main():
-    """Main function to generate CONTRIBUTORS.md file."""
+    """Main function to generate README.md file."""
     token = get_github_token()
     org_name = "soplang"
 
@@ -165,12 +165,12 @@ def main():
 
         markdown = generate_markdown(contributors, org_name)
 
-        # Write the markdown to CONTRIBUTORS.md
-        print("Writing CONTRIBUTORS.md...")
-        with open('CONTRIBUTORS.md', 'w') as file:
+        # Write the markdown to README.md
+        print("Writing README.md...")
+        with open('README.md', 'w') as file:
             file.write(markdown)
 
-        print("CONTRIBUTORS.md generated successfully")
+        print("README.md generated successfully")
 
     except Exception as e:
         print(f"Error: {e}")
