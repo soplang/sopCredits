@@ -9,10 +9,15 @@ on:
 jobs:
   update-contributors:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GB_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -31,13 +36,12 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          git config --global user.name "GitHub Actions bot"
-          git config --global user.email "bot@soplang.org"
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
           git add README.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             git commit -m "🔄 update README.md with sopCredits"
-            git remote set-url origin https://x-access-token:${{ secrets.GB_TOKEN }}@github.com/soplang/sopCredits.git
             git push
           fi
