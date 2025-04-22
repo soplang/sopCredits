@@ -38,5 +38,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "🔄 update README.md with sopCredits"
+            git remote set-url origin https://x-access-token:${{ secrets.GB_TOKEN }}@github.com/soplang/sopCredits.git
             git push
           fi
