@@ -27,7 +27,7 @@ jobs:
       - name: Generate README.md
         run: python scripts/sopcredits.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GB_TOKEN: ${{ secrets.GB_TOKEN }}
 
       - name: Commit and push if changed
         run: |
