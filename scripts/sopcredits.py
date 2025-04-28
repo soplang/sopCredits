@@ -8,9 +8,9 @@ from datetime import datetime
 
 def get_github_token():
     """Get GitHub token from environment variable."""
-    token = os.environ.get('GB_TOKEN')
+    token = os.environ.get('GITHUB_TOKEN')
     if not token:
-        raise ValueError("GB_TOKEN environment variable is not set")
+        raise ValueError("GITHUB_TOKEN environment variable is not set")
     return token
 
 
